@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Interactive Prompt Playground - Batch Run</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  label { display: block; margin: 10px 0 5px; }
+  textarea, select, input { width: 100%; max-width: 500px; }
+  select[multiple] { height: 100px; }
+  #batchResult { white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; margin-top: 15px; min-height: 100px; overflow-x: auto; }
+  button { padding: 8px 16px; margin-top: 15px; }
+  table { border-collapse: collapse; margin-top: 15px; max-width: 100%; }
+  th, td { border: 1px solid #ddd; padding: 6px 8px; max-width: 300px; word-wrap: break-word; }
+  th { background-color: #f4f4f4; }
+  #loading { margin-top: 15px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h2>Interactive Prompt Playground - Batch Output Grid</h2>
+
+<label for="model">Model:</label>
+<select id="model">
+  <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+  <option value="gpt-4">gpt-4</option>
+</select>
+
+<label for="system_prompt">System Prompt:</label>
+<textarea id="system_prompt" rows="2">You are a helpful product assistant.</textarea>
+
+<label for="user_prompt">User Prompt:</label>
+<textarea id="user_prompt" rows="2">Write a product description for iPhone 14 Pro.</textarea>
+
+<label for="temperature">Temperature (select one or more):</label>
+<select id="temperature" multiple>
+  <option value="0.0" selected>0.0</option>
+  <option value="0.7" selected>0.7</option>
+  <option value="1.2">1.2</option>
+</select>
+
+<label for="presence_penalty">Presence Penalty (select one or more):</label>
+<select id="presence_penalty" multiple>
+  <option value="0.0" selected>0.0</option>
+  <option value="1.5">1.5</option>
+</select>
+
+<label for="frequency_penalty">Frequency Penalty (select one or more):</label>
+<select id="frequency_penalty" multiple>
+  <option value="0.0" selected>0.0</option>
+  <option value="1.5">1.5</option>
+</select>
+
+<label for="max_tokens">Max Tokens (select one or more):</label>
+<select id="max_tokens" multiple>
+  <option value="50" selected>50</option>
+  <option value="150" selected>150</option>
+  <option value="300">300</option>
+</select>
+
+<label for="stop_sequence">Stop Sequence (optional):</label>
+<input type="text" id="stop_sequence" placeholder="Enter stop sequence (e.g., '.')">
+
+<button id="batchRunBtn">Run Batch Tests (All Parameter Combos)</button>
+
+<div id="loading" style="display:none;">Running batch requests... please wait.</div>
+
+<div id="batchResult"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
